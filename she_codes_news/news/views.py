@@ -12,5 +12,8 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_stories'] = NewsStory.objects.all()[:4]
+        #slicing / news taking the first 4 stories as the latest stories 
         context['all_stories'] = NewsStory.objects.all()
         return context
+
+#class based view 
