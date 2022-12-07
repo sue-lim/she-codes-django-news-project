@@ -2,15 +2,14 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static
-'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %}
 
 
-
 <h2>Latest News</h2>
+<a href="{% url 'news:newStory' %}">Write New Story</a>
 
     <div id="latest-stories">
         {% if latest_stories %}

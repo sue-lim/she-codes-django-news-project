@@ -30,5 +30,9 @@ class AddStoryView(generic.CreateView):
     template_name = 'news/createStory.html'
     success_url = reverse_lazy('news:index')
     
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        # this is the user that is currently logged in
+        return super().form_valid(form)
 
 
