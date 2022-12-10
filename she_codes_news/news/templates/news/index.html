@@ -9,9 +9,13 @@
 
 
 <h2>Latest News</h2>
-<a href="{% url 'news:newStory' %}">Write New Story</a>
 
+
+<a href="{% url 'news:newStory' %}">Write New Story</a>
+<p></p>
     <div id="latest-stories">
+
+        
         {% if latest_stories %}
             {% for story in latest_stories %}
                 {% include "./storyCard.html" with story=story position=forloop.counter %}
@@ -21,7 +25,7 @@
             <p>No stories are available.</p>
         {% endif %}
     </div>
-
+<p></p>
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
@@ -33,5 +37,6 @@
             <p>No stories are available.</p>
         {% endif %}
     </div>
+
 
 {% endblock %}
