@@ -1,19 +1,27 @@
 {% extends "base.html" %}
+{% comment %} INDIVIDUAL STORY VIEW {% endcomment %}
+
+
 {% load static %}
 
 {% block stylesheets %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-
 {% endblock %}
-
 {% block content %}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
+    <h4>♥ by... {{ story.author }}</h4>
+    <h4>Posted... {{ story.pub_date }}</h4>
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        {% if position < 5 %}
+{% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
+            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+        {% else %}
+            <img src={{story.image_url}}">
+        {% endif %}
+        {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
         {{ story.content|linebreaks }}
     </div>
 </div>

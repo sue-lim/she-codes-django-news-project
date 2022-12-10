@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% comment %} INDIVIDUAL STORY VIEW {% endcomment %}
+
+
+{% load static %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Welcome back...</h2>
+<a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a>
+{% comment %} <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form> {% endcomment %}
+{% endblock %}
