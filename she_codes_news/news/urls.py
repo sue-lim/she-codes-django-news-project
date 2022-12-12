@@ -1,3 +1,7 @@
+#for working out with Django Admin, we now need a URL through which we can access our Admin Site
+#Register Admin urls to our urls.py
+
+from django.contrib import admin
 from django.urls import path
 from . import views
 

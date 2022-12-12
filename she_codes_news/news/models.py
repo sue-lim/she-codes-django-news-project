@@ -10,5 +10,7 @@ class NewsStory(models.Model):
     image_url = models.URLField(blank=True)
 #text field for longer text vs such as blogs
 
-# def get_absolute_url(self):
-#     return reverse('news:story', kwargs={'pk': self.pk})
+def get_absolute_url(self):
+    return reverse('news:story', kwargs={'pk': self.pk})
+
+

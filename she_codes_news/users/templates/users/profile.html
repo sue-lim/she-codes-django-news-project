@@ -11,17 +11,19 @@
 
 {% block content %}
 <h2>Welcome back...</h2>
-<p> Username: <a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a></p>
-<p> First name: <a href="{% url 'users:profile' request.user.id %}">{{ user.firstname }}</a></p>
-<p> Last name: <a href="{% url 'users:profile' request.user.id %}">{{ user.lastname }}</a></p>
-<p> Date joined: <a href="{% url 'users:profile' request.user.id %}">{{ user.datejoined }}</a></p>
+<p> Username: <a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a></p> 
+<p> First name: <a href="{% url 'users:profile' request.user.id %}">{{ user.first_name }}</a></p>
+<p> Last name: <a href="{% url 'users:profile' request.user.id %}">{{ user.last_name }}</a></p>
 <p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
+<p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
+<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p>
+<p> Date Joined: <a href="{% url 'users:profile' request.user.id %}">{{ user.date_joined }}</a></p>
 
 
-
-{% comment %} <form method="post">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
-</form> {% endcomment %}
+    <button type="submit">Edit Account</button>
+</form>
+
 {% endblock %}
