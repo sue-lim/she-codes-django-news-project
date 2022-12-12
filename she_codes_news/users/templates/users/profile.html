@@ -11,7 +11,14 @@
 
 {% block content %}
 <h2>Welcome back...</h2>
-<a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a>
+<p> Username: <a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a></p>
+<p> First name: <a href="{% url 'users:profile' request.user.id %}">{{ user.firstname }}</a></p>
+<p> Last name: <a href="{% url 'users:profile' request.user.id %}">{{ user.lastname }}</a></p>
+<p> Date joined: <a href="{% url 'users:profile' request.user.id %}">{{ user.datejoined }}</a></p>
+<p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
+
+
+
 {% comment %} <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
