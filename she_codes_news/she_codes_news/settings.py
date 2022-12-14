@@ -135,3 +135,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'news:index'
 LOGOUT_REDIRECT_URL = 'news:index'
+
+#code below will not allow anyone to post and will produce an error.
+# https://django-comments-xtd.readthedocs.io/en/latest/usecases/only-signed-in-can-comment.html
+COMMENTS_XTD_APP_MODEL_OPTIONS = {
+    'default': {
+        'allow_flagging': False,
+        'allow_feedback': False,
+        'show_feedback': False,
+        'who_can_post': 'users'
+    }
+}
+

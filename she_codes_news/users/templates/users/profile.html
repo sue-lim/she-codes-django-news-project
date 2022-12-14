@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% comment %} INDIVIDUAL STORY VIEW {% endcomment %}
+
 
 
 {% load static %}
@@ -11,19 +11,37 @@
 
 {% block content %}
 <h2>Welcome back...</h2>
-<p> Username: <a href="{% url 'users:profile' request.user.id %}">{{ user.username }}</a></p> 
-<p> First name: <a href="{% url 'users:profile' request.user.id %}">{{ user.first_name }}</a></p>
-<p> Last name: <a href="{% url 'users:profile' request.user.id %}">{{ user.last_name }}</a></p>
+
+<p> First name: {{ user.first_name }}</p>
+<p> Last name: {{ user.last_name }}</a></p>
 <p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
-<p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
-<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p>
-<p> Date Joined: <a href="{% url 'users:profile' request.user.id %}">{{ user.date_joined }}</a></p>
+{% comment %} <p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
+<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p> {% endcomment %}
+<p> Date joined: {{ user.date_joined }}</p>
 
+<a href="{% url 'users:editAccount' request.user.id %}">Edit Account</a>
 
-<form method="post">
+{% comment %} a. <p> Username: <a href="{% url 'users:profile' profile.id %}">{{ profile.username }}</a></p>  {% endcomment %}
+{% comment %} a. used for any user otherwise b. {% endcomment %}
+{% comment %} b. for logged in users only {% endcomment %}
+
+<div id="user_stories">
+    <h2>My user stories...</h2>
+    {% if user_stories %}
+        {% for story in user_stories %}
+            {% include "news/storyCard.html" with story=story %}
+
+            {% comment %} <p>{{ story.title }}</p> {% endcomment %}
+        {% endfor %}
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
+
+{% comment %} <form method="get">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Edit Account</button>
-</form>
+</form> {% endcomment %}
 
 {% endblock %}

@@ -9,11 +9,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 {% block content %}
+currentuser: {{ user.id }}
+post author: {{ story.author.id}}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <h4>♥ by... {{ story.author }}</h4>
-    <h4>Posted... {{ story.pub_date }}</h4>
+    {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
     <div id="story-content">
         {% if position < 5 %}
 {% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}

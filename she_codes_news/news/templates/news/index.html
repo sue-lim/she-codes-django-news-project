@@ -10,8 +10,11 @@
 
 <h2>Latest News...</h2>
 
-
-<a class='button1' href="{% url 'news:newStory' %}">(+) New Story</a>
+{% if user.is_authenticated %}
+    <a class='button1' href="{% url 'news:newStory' %}">(+) New Story</a>
+    {% else %}
+        <p>To (+) New Story ... please </p> | <a href="{% url 'login' %}">Login</a> | <a href="{% url 'users:createAccount' %}">Create Account</a>
+        {% endif %}
 
 <p></p>
 
@@ -39,5 +42,22 @@
         {% endif %}
     </div>
 
+    {% if object.allow_comments %}
+    {% if user.is_authenticated %}
+    <div class="comment">
+        <h5 class="text-center">Post your comment</h5>
+        <div class="well my-4">
+        {% comment %} {% render_comment_form for object %} {% endcomment %}
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center">
+        Only registered users can post comments. Please,
+        <a href="{% url 'admin:login' %}?next={{ object.get_absolute_url }}">login</a>.
+    </p>
+    {% endif %}
+{% else %}
+    <h5 class="text-center">comments are disabled for this article</h5>
+{% endif %}
 
 {% endblock %}

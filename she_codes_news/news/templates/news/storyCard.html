@@ -1,13 +1,29 @@
 {% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
 
-{% comment %} page with all the cards {% endcomment %}
+{% comment %} HOMEPAGE WITH ALL THE STORIES {% endcomment %}
+{% comment %} HOMEPAGE WITH ALL THE STORIES {% endcomment %}
 
 {% block stylesheets %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 {% block content %}
+
+{% comment %} <div class="story-card" id="story-card-{{ position }}"> {% endcomment %}
+    {% comment %} <a href="{% url 'news:story' story.id %}">
+        {% if story.image_url %}
+            <img src="{{ story.image_url }}">
+        {% else %}
+            <img src="https://picsum.photos/300?random={{ story.id }}">
+        {% endif %}
+        <div class="story-card-text">
+            <h3>{{ story.title }}</h3>
+            <h4>{{ story.author }}</h4>
+            <h4>{{ story.pub_date }}</h4>
+        </div>
+    </a>
+</div> {% endcomment %}
 
 
 <div class="story-card" id="story-card-{{ position }}">
@@ -20,7 +36,7 @@
         {% endif %}
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
-            <h4>♥ by... {{ story.author }}</h4>
+            <h4>♥ by... {{ story.author }}</h4> 
             <h4>{{ story.pub_date }}</h4>
         </div>
     </a>

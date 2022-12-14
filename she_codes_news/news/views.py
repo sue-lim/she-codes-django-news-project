@@ -2,6 +2,8 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView
 
 
 class IndexView(generic.ListView):
@@ -34,5 +36,10 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         # this is the user that is currently logged in
         return super().form_valid(form)
-
+    
+# the below adds the view to update the story and links to updateStory.html
+class EditStoryView(generic.UpdateView):
+    model = NewsStory
+    template_name = 'news/editStory.html'
+    fields = ['title', 'content', 'author' , 'image_url']
 
