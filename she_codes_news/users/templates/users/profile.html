@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% comment %} VIEW BY LOGGED IN PROFILE {% endcomment %}
+{% comment %} VIEW BY LOGGED IN PROFILE {% endcomment %}
+
+{% load static %}
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+{% block content %}
+
+<h2>Welcome back...</h2>
+{% if not user.profile_picture %}
+    <img src="https://picsum.photo/600" class="profile-card-image">
+    {% else %}
+    <img src="{{ user.profile_picture }}" class="profile-card-image"/>
+    {% endif %}
+<p> First name: {{ user.first_name }}</p>
+<p> Last name: {{ user.last_name }}</a></p>
+<p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
+<p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
+<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p> 
+<p> Date joined: {{ user.date_joined }}</p>
+
+<a href="{% url 'users:editAccount' request.user.id %}">Edit Account</a>
+
+<p> Username: <a href="{% url 'users:profile' profile.id %}">{{ profile.username }}</a></p> 
+{% comment %} a. used for any user otherwise b. {% endcomment %}
+{% comment %} b. for logged in users only {% endcomment %}
+
+<div id="user_stories">
+    <h2>My user stories...</h2>
+    {% if user_stories %}
+        {% for story in user_stories %}
+            {% include "news/storyCard.html" with story=story %}
+
+            {% comment %} <p>{{ story.title }}</p> {% endcomment %}
+        {% endfor %}
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
+
+{% comment %} <form method="get">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Edit Account</button>
+</form> {% endcomment %}
+
+{% endblock %}

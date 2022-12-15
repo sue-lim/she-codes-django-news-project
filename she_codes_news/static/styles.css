@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+/* main css file */
 
 body {
-    background-color: rgb(110, 92, 210);
+    background-color: rgb(255, 255, 255);
 }
 
 header {
@@ -25,9 +26,9 @@ header {
 /* Page Content */
 /* .content {padding:20px;} */
 
-img {
+/* img {
     filter: grayscale(100%);
-}
+} */
 
 h1 {
     font-family: 'Montserrat Subrayada', sans-serif;
@@ -78,7 +79,10 @@ a, p {
 .create-form-class{
     text-align: center;
 
+}
 
-
-
+.profile-card-image img{
+    width: 10%;
+    height: 10%;
+    margin-right: 5px;
 }

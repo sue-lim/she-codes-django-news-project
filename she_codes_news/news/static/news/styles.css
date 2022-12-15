@@ -1,6 +1,6 @@
 .story-card {
     margin: 2px;
-    border: 1px solid #000;
+    border: 1px solid rgb(168, 161, 161);
     padding: 5px;
 }
 
@@ -83,4 +83,10 @@
     float: right;
     margin: 0 0 10px 10px;
     width: 50%;
+}
+
+#profile-card-image img{
+    width: 10%;
+    height: 10%;
+    margin-right: 5px;
 }

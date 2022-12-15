@@ -1,10 +1,22 @@
+{% comment %} BASE.HTML HAS BEEN COMMENTED OUT AS IT CHANGES THE DIVS {% endcomment %}
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% load static %}
 
-<div class="story-card" id="story-card-{{ position }}">
-    <a href="{% url 'news:story' story.id %}">
-        {% if position < 5 %}
-            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+{% comment %} HOMEPAGE WITH ALL THE STORIES {% endcomment %}
+{% comment %} HOMEPAGE WITH ALL THE STORIES {% endcomment %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+{% block content %}
+
+{% comment %} <div class="story-card" id="story-card-{{ position }}"> {% endcomment %}
+    {% comment %} <a href="{% url 'news:story' story.id %}">
+        {% if story.image_url %}
+            <img src="{{ story.image_url }}">
         {% else %}
-            <img src={{story.image_url}}">
+            <img src="https://picsum.photos/300?random={{ story.id }}">
         {% endif %}
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
@@ -12,5 +24,23 @@
             <h4>{{ story.pub_date }}</h4>
         </div>
     </a>
+</div> {% endcomment %}
+
+
+<div class="story-card" id="story-card-{{ position }}">
+    <a href="{% url 'news:story' story.id %}">
+{% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
+        {% if position > 5 %}
+            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+        {% else %}
+            <img src={{story.image_url}}">
+        {% endif %}
+        <div class="story-card-text">
+            <h3>{{ story.title }}</h3>
+            <h4>♥ by... {{ story.author }}</h4> 
+            <h4>{{ story.pub_date }}</h4>
+        </div>
+    </a>
 </div>
 
+{% endblock %}

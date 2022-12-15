@@ -1,5 +1,8 @@
+from audioop import reverse
 from django.contrib.auth import get_user_model
 from django.db import models
+
+# basic admin panel with Groups and Users models which come from Django authentication framework located in django.contrib.auth.
 
 # this is the model
 class NewsStory(models.Model):
@@ -10,5 +13,7 @@ class NewsStory(models.Model):
     image_url = models.URLField(blank=True)
 #text field for longer text vs such as blogs
 
-# def get_absolute_url(self):
-#     return reverse('news:story', kwargs={'pk': self.pk})
+def get_absolute_url(self):
+    return reverse('news:story', kwargs={'pk': self.pk})
+
+

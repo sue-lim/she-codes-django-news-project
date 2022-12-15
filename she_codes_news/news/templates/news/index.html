@@ -2,41 +2,62 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'she_codes_news\news\static\news\styles.css' %}">
 {% endblock %}
 
 {% block content %}
 
 
-<h2>Latest News</h2>
+<h2>Latest News...</h2>
 
+{% if user.is_authenticated %}
+    <a class='button1' href="{% url 'news:newStory' %}">(+) New Story</a>
+    {% else %}
+        <p>To (+) New Story ... please </p> | <a href="{% url 'login' %}">Login</a> | <a href="{% url 'users:createAccount' %}">Create Account</a>
+        {% endif %}
 
-<a href="{% url 'news:newStory' %}">Write New Story</a>
 <p></p>
-    <div id="latest-stories">
 
-        
+    <div id="latest-stories">
         {% if latest_stories %}
             {% for story in latest_stories %}
                 {% include "./storyCard.html" with story=story position=forloop.counter %}
-                <p>{{ story.title }}</p>
+                {% comment %} <p>{{ story.title }}</p> {% endcomment %}
             {% endfor %}
         {% else %}
-            <p>No stories are available.</p>
+            <p>No stories are available...</p>
         {% endif %}
     </div>
-<p></p>
+
+<h2>All Stories...</h2>
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
                 {% include "./storyCard.html" with story=story %}
 
-                <p>{{ story.title }}</p>
+                {% comment %} <p>{{ story.title }}</p> {% endcomment %}
             {% endfor %}
         {% else %}
             <p>No stories are available.</p>
         {% endif %}
     </div>
 
+    {% if object.allow_comments %}
+    {% if user.is_authenticated %}
+    <div class="comment">
+        <h5 class="text-center">Post your comment</h5>
+        <div class="well my-4">
+        {% comment %} {% render_comment_form for object %} {% endcomment %}
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center">
+        Only registered users can post comments. Please,
+        <a href="{% url 'admin:login' %}?next={{ object.get_absolute_url }}">login</a>.
+    </p>
+    {% endif %}
+{% else %}
+    <h5 class="text-center">comments are disabled for this article</h5>
+{% endif %}
 
 {% endblock %}
