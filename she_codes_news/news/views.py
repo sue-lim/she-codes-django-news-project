@@ -47,9 +47,19 @@ class EditStoryView(generic.UpdateView):
 class AuthorStoriesView(ListView):
     model = NewsStory
     template_name = 'news/profileStory.html'
-    # context_object_name = 'story'
-    def get_queryset(self):
-        return NewsStory.objects.all()
+    context_object_name = 'profileStory'
+    # def get_queryset(self):
+    #     # return NewsStory.objects.all()
+    #     return NewsStory.objects.filter(author=self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author_story'] = NewsStory.objects.filter(author=self.kwargs['pk]'
+    
+    
+    
+    
+    
+    
     
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)

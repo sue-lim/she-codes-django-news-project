@@ -3,32 +3,27 @@
 {% comment %} VIEW BY STORY BY AUTHOR {% endcomment %}
 
 {% load static %}
+
 {% block stylesheets %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 {% block content %}
+<h2>View Story by profile...</h2>
+
+
 
 <div id="author_stories">
-    <h2>View Story by profile...</h2>
+    <h2>You are viewing all stories by {{ story.author }}...</h2>
+    {% if author_stories %}
+        {% for story in author_stories %}
+            {% include "news/storyCard.html" with story=story %}
 
-    currentuser: {{ user.id }}
-    post author: {{ story.author.username }}
-
-
-
-
-    <div id="all-stories">
-        {% if latest_stories %}
-            {% for story in all_stories %}
-                {% include "./storyCard.html" with story=story %}
-
-                {% comment %} <p>{{ story.title }}</p> {% endcomment %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
-
+            {% comment %} <p>{{ story.title }}</p> {% endcomment %}
+        {% endfor %}
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
 
 {% endblock %}

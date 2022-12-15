@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
 currentuser: {{ user.id }}
-post author: {{ story.author.username }}
+post author: {{ story.author }}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
@@ -26,6 +26,6 @@ post author: {{ story.author.username }}
         {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
         {{ story.content|linebreaks }}
     </div>
-</div>
+
 
 {% endblock %}

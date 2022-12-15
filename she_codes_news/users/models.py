@@ -17,8 +17,8 @@ class CustomUser(AbstractUser):
         return self.username
 
 
-        def __str__(self):
-            return "Profile of {}".format(self.user.username)
+        # def __str__(self):
+        #     return "Profile of {}".format(self.user.username)
         
 ########################################
 # Here we are creating a model (a table in our future database) that inherits all the fields from the AbstractUser class (that's the built-in model that has fields like username, email, password, etc.), but we are also adding a couple of fields that aren't there. In this example, we are adding "First Name", "Last Name" and "Twitter Handle" fields.
