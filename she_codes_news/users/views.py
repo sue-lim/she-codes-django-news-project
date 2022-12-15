@@ -28,8 +28,8 @@ class ProfileView(generic.DetailView):
 class EditAccountView(generic.UpdateView):
     form_class = CustomUserChangeForm
     model = CustomUser
-    context_object_name = 'createAccount'
-    template_name = 'users/createAccount.html'
+    context_object_name = 'editAccount'
+    template_name = 'users/editAccount.html'
     def get_success_url(self):
         return reverse_lazy('users:profile', kwargs={'pk': self.object.id})
     

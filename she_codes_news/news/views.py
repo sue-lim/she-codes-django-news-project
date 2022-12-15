@@ -4,6 +4,7 @@ from .models import NewsStory
 from .forms import StoryForm
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic import ListView
 
 
 class IndexView(generic.ListView):
@@ -42,4 +43,18 @@ class EditStoryView(generic.UpdateView):
     model = NewsStory
     template_name = 'news/editStory.html'
     fields = ['title', 'content', 'author' , 'image_url']
+
+class AuthorStoriesView(ListView):
+    model = NewsStory
+    template_name = 'news/profileStory.html'
+    # context_object_name = 'story'
+    def get_queryset(self):
+        return NewsStory.objects.all()
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     #slicing / news taking the first 4 stories as the latest stories 
+    #     # context['user_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
+    #     context['author_stories'] = NewsStory.objects.filter(author='author')
+    #     return context
 

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% comment %} VIEW BY STORY BY AUTHOR {% endcomment %}
+{% comment %} VIEW BY STORY BY AUTHOR {% endcomment %}
+
+{% load static %}
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+{% block content %}
+
+<div id="author_stories">
+    <h2>View Story by profile...</h2>
+
+    currentuser: {{ user.id }}
+    post author: {{ story.author.username }}
+
+
+
+
+    <div id="all-stories">
+        {% if latest_stories %}
+            {% for story in all_stories %}
+                {% include "./storyCard.html" with story=story %}
+
+                {% comment %} <p>{{ story.title }}</p> {% endcomment %}
+            {% endfor %}
+        {% else %}
+            <p>No stories are available.</p>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+#the below are additional user/fields.py I have added to the form for creating account and fields for updating the form. This is reflected in the user/models.py
 class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20, blank=True)

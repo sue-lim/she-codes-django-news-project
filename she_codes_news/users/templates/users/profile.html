@@ -1,27 +1,30 @@
 {% extends "base.html" %}
-
-
+{% comment %} VIEW BY LOGGED IN PROFILE {% endcomment %}
+{% comment %} VIEW BY LOGGED IN PROFILE {% endcomment %}
 
 {% load static %}
-
 {% block stylesheets %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
-
 {% block content %}
-<h2>Welcome back...</h2>
 
+<h2>Welcome back...</h2>
+{% if not user.profile_picture %}
+    <img src="https://picsum.photo/600" class="profile-card-image">
+    {% else %}
+    <img src="{{ user.profile_picture }}" class="profile-card-image"/>
+    {% endif %}
 <p> First name: {{ user.first_name }}</p>
 <p> Last name: {{ user.last_name }}</a></p>
 <p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
-{% comment %} <p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
-<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p> {% endcomment %}
+<p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
+<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p> 
 <p> Date joined: {{ user.date_joined }}</p>
 
 <a href="{% url 'users:editAccount' request.user.id %}">Edit Account</a>
 
-{% comment %} a. <p> Username: <a href="{% url 'users:profile' profile.id %}">{{ profile.username }}</a></p>  {% endcomment %}
+<p> Username: <a href="{% url 'users:profile' profile.id %}">{{ profile.username }}</a></p> 
 {% comment %} a. used for any user otherwise b. {% endcomment %}
 {% comment %} b. for logged in users only {% endcomment %}
 

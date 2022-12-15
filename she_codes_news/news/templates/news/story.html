@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% comment %} INDIVIDUAL STORY VIEW {% endcomment %}
-
+{% comment %} INDIVIDUAL STORY VIEW {% endcomment %}
 
 {% load static %}
 
@@ -10,11 +10,11 @@
 {% endblock %}
 {% block content %}
 currentuser: {{ user.id }}
-post author: {{ story.author.id}}
+post author: {{ story.author.username }}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4>♥ by... {{ story.author }}</h4>
+    <h4><a href="{% url 'news:profileStory' story.author.id %}" > Written by {{ story.author }} </a></h4>
     {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
     <div id="story-content">
         {% if position < 5 %}

@@ -13,4 +13,5 @@ urlpatterns = [
     path('post/<int:pk>/', views.StoryView.as_view(), name='story'),
     path('add-story/', views.AddStoryView.as_view(), name='newStory'),
     path('post/edit/<int:pk>/', EditStoryView.as_view(), name='editStory'),
+    path('<int:pk>/', views.AuthorStoriesView.as_view(), name='profileStory'),
 ]

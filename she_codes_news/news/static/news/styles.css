@@ -84,3 +84,9 @@
     margin: 0 0 10px 10px;
     width: 50%;
 }
+
+#profile-card-image img{
+    width: 10%;
+    height: 10%;
+    margin-right: 5px;
+}

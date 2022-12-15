@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+# basic admin panel with Groups and Users models which come from Django authentication framework located in django.contrib.auth.
+
 # this is the model
 class NewsStory(models.Model):
     title = models.CharField(max_length=200)
