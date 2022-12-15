@@ -53,7 +53,8 @@ class AuthorStoriesView(ListView):
     #     return NewsStory.objects.filter(author=self.request.user)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['author_story'] = NewsStory.objects.filter(author=self.kwargs['pk]'
+        context['author_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
+        return context                                                
     
     
     
