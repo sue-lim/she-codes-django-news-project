@@ -146,4 +146,3 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
         'who_can_post': 'users'
     }
 }
-

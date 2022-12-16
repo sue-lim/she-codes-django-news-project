@@ -3,8 +3,9 @@ from .models import NewsStory
 
 class NewsStoryAdmin(admin.ModelAdmin):
     list_display = ('author', 'title', 'pub_date', 'content',)
-
+    ordering = ['title']
     search = ['title', 'content']
+    actions = ['edit']
 
 
 admin.site.register(NewsStory, NewsStoryAdmin)

@@ -17,13 +17,9 @@ class CreateAccountView(generic.CreateView):
 class ProfileView(generic.DetailView):
     model = CustomUser
     template_name = 'users/profile.html'
-    context_object_name = 'profile'
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #slicing / news taking the first 4 stories as the latest stories 
-        context['user_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
-        return context
+    
+
 
 class EditAccountView(generic.UpdateView):
     form_class = CustomUserChangeForm

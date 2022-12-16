@@ -5,33 +5,40 @@
 {% load static %}
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
 {% endblock %}
 {% block content %}
 
-<h2>Welcome back...</h2>
-{% if not user.profile_picture %}
+<h2>Welcome ...</h2>
+{% comment %} <p>{{ customuser.username }}</a></p>  {% endcomment %}
+
+{% if request.user == customuser %}
+
+{% if not customuser.profile_picture %}
+
+<h2>Welcome back ...</h2>
     <img src="https://picsum.photo/600" class="profile-card-image">
     {% else %}
-    <img src="{{ user.profile_picture }}" class="profile-card-image"/>
+    <img src="{{ customuser.profile_picture }}" class="profile-card-image"/>
     {% endif %}
-<p> First name: {{ user.first_name }}</p>
-<p> Last name: {{ user.last_name }}</a></p>
-<p> Email: <a href="{% url 'users:profile' request.user.id %}">{{ user.email }}</a></p>
-<p> Bio: <a href="{% url 'users:profile' request.user.id %}">{{ user.bio }}</a></p>
-<p> Profile Picture: <a href="{% url 'users:profile' request.user.id %}">{{ user.profilepicture }}</a></p> 
-<p> Date joined: {{ user.date_joined }}</p>
+<p> Username: {{ customuser.username }}</a></p> 
+<p> First name: {{ customuser.first_name }}</p>
+<p> Last name: {{ customuser.last_name }}</p>
+<p> Email: {{ customuser.email }}</p>
+<p> Bio: {{ customuser.bio }}</p>
+<p> Profile Picture: {{ customuser.profilepicture }}</p> 
+<p> Date joined: {{ customuser.date_joined }}</p>
+<a href="{% url 'users:editAccount' customuser.id %}">Edit Account</a>
 
-<a href="{% url 'users:editAccount' request.user.id %}">Edit Account</a>
+{% endif %}
 
-<p> Username: <a href="{% url 'users:profile' profile.id %}">{{ profile.username }}</a></p> 
 {% comment %} a. used for any user otherwise b. {% endcomment %}
 {% comment %} b. for logged in users only {% endcomment %}
 
 <div id="user_stories">
-    <h2>My user stories...</h2>
-    {% if user_stories %}
-        {% for story in user_stories %}
+    <h2>You are viewing stories by {{ customuser.username }}...</h2>
+    {% if customuser.newsstory_set.all %}
+        {% for story in customuser.newsstory_set.all %}
             {% include "news/storyCard.html" with story=story %}
 
             {% comment %} <p>{{ story.title }}</p> {% endcomment %}

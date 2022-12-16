@@ -6,7 +6,7 @@
 
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
 {% endblock %}
 {% block content %}
 currentuser: {{ user.id }}
@@ -14,7 +14,7 @@ post author: {{ story.author }}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4><a href="{% url 'news:profileStory' story.author.id %}" > Written by {{ story.author }} </a></h4>
+    <h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
     {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
     <div id="story-content">
         {% if position < 5 %}

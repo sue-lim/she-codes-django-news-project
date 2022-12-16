@@ -47,14 +47,17 @@ class EditStoryView(generic.UpdateView):
 class AuthorStoriesView(ListView):
     model = NewsStory
     template_name = 'news/profileStory.html'
-    context_object_name = 'profileStory'
-    # def get_queryset(self):
-    #     # return NewsStory.objects.all()
-    #     return NewsStory.objects.filter(author=self.request.user)
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['author_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
-        return context                                                
+    def get_queryset(self):
+        """get the new stories for the author specified in the URL"""
+        qs = super().get_queryset()  # get default queryset
+        qs = qs.filter(author_id=self.kwargs['pk'])  # add filter for only the user you / authors id care about
+        return qs
+    
+    # return NewsStory.objects.filter(author=self.request.user)
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['author_stories'] = NewsStory.objects.filter(author=self.kwargs['pk'])
+    #     return context                                                
     
     
     
