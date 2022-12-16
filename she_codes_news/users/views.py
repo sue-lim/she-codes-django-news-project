@@ -18,9 +18,6 @@ class ProfileView(generic.DetailView):
     model = CustomUser
     template_name = 'users/profile.html'
     
-    
-
-
 class EditAccountView(generic.UpdateView):
     form_class = CustomUserChangeForm
     model = CustomUser

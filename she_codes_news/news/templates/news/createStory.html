@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% comment %} CREATE A NEW ACCOUNT {% endcomment %}
-{% comment %} CREATE A NEW ACCOUNT {% endcomment %}
+{% comment %} CREATE A NEW STORY {% endcomment %}
+{% comment %} CREATE A NEW STORY {% endcomment %}
 {%load static%}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
@@ -9,12 +9,19 @@
 {% block content %}
 
 <h2>Create a New Story</h2>
+<br></br>
+<div class ='form_area'>
+    <table>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}         
+    </table>
+    <br></br>
+<input class="button1" type="submit" value="submit">
 
-<form class="create-form-class" action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="button1" type="submit" value="submit">
-</form>
+</div>
+
+
 
 {% endblock %}
 
