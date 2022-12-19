@@ -19,7 +19,7 @@
 </div>
 
     <div = class="profile_html">
-    <div = class="profile_html">
+    {% comment %} <div = class="profile_html"> {% endcomment %}
     <img class="profile-card" src="https://picsum.photo/600">
     {% else %}
     <img src="{{ customuser.profile_picture }}"/>
@@ -27,6 +27,7 @@
     </div>
 </div>
 <div = class="profile_html">
+    <ul>
     <p> Username: {{ customuser.username }}</a></p> 
     <p> First name: {{ customuser.first_name }}</p>
     <p> Last name: {{ customuser.last_name }}</p>
@@ -34,13 +35,15 @@
     <p> Bio: {{ customuser.bio }}</p>
     {% comment %} <p> Profile Picture: {{ customuser.profilepicture }}</p>  {% endcomment %}
     <p> Date joined: {{ customuser.date_joined }}</p>
-    <button class ='button1'> <a href="{% url 'users:editAccount' customuser.id %}">Edit Account</a></button>
+    <p> Stories published: {{customuser.newsstory_set.count}}</p>
+    <br></br>
+    <button class =''> <a href="{% url 'users:editAccount' customuser.id %}">Edit Account</a></button></ul>
 
         {% endif %}
 </div>
 {% comment %} a. used for any user otherwise b. {% endcomment %}
 {% comment %} b. for logged in users only {% endcomment %}
-
+<br></br>
 <div id="user_stories">
     <h2>You are viewing stories by {{ customuser.username }}...</h2>
     {% if customuser.newsstory_set.all %}

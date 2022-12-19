@@ -28,49 +28,31 @@ post author: {{ story.author }} {% endcomment %}
     </div>
 
 {% if user.is_authenticated %}
-
-<div id="comment-wrapper">
-    <div id="form_2_columns">
-        <h4>Add a comment</h4>
-        <table>
-            <form method="post">
-            {% csrf_token %}
-            {{ form.as_table }}         
-        </table>
-        <br></br>
-        <input class="" type="submit" value="submit">
-    </div>
-    {% comment %} <div>
-
-        <form method="POST" action="{% url 'news:deleteStory' story.id %}">
-            {% csrf_token %}
-            {{ form.as_table }}
-            <button type="submit">Delete Story</button>
+    <div id="comment-wrapper">
+        <form method="POST" action="{% url 'news:addComment' story.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
         </form> 
     </div> 
-
-    <div>
-
-        <form method="POST" action="{% url 'news:editStory' story.id %}">
-            {% csrf_token %}
-            {{ form.as_table }}
-            <button type="submit">Edit Story</button>
-        </form> 
-    </div>  {% endcomment %}
-        
+    
+    {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
+    
+    <ul>
+        {% for comment in story.comments.all %}
+        <li>{{comment.author.username}} ({{comment.created_at}}):   {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
 
 {% else %}
-    {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
-    <br></br>
+<br></br>
+    <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment</p>
     <ul>
-        <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
-        <br></br>
     {% for comment in story.comments.all %}
         <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>
     {% endfor %}
     </ul>
+
 {% endif %}
-</div>
 
 {% endblock %}
-
