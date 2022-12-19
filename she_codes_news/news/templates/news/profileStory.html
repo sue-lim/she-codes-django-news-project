@@ -14,7 +14,7 @@ post author: {{ story.author.username }}
 
 
 <div id="author_stories">
-    <h2>You are viewing all stories by {{ story.author }}...</h2>
+    <h2>You are viewing all stories by ...{{ story.author }}...</h2>
     {% if newsstory_list %}
         {% for story in newsstory_list %}
             {% include "news/storyCard.html" with story=story %}

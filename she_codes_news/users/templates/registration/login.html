@@ -1,21 +1,32 @@
 {% extends "base.html" %}
-{% comment %} CREATE A NEW ACCOUNT {% endcomment %}
-{% comment %} CREATE A NEW ACCOUNT {% endcomment %}
+{% comment %} CREATE A NEW STORY {% endcomment %}
+{% comment %} CREATE A NEW STORY {% endcomment %}
 {%load static%}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 
 {% block content %}
-<br></br>
-<div class ='form_area'>
-    <table>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_table }}         
-    </table>
-    <br></br>
-<input class="button1" type="submit" value="submit">
 
+<div class="form_row">
+    <div id="form_3_columns">
+    </div>
+
+    <div id="form_3_columns_middle">
+        <h2>Login</h2>
+
+    <div id="form_3_columns_middle">
+        <table>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_table }}         
+        </table>
+        <br></br>
+        <input class="button1" type="submit" value="submit">
+    </div>
+
+    <div id="form_3_columns">
+    </div>
 </div>
 {% endblock %}
+

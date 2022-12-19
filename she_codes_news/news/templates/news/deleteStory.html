@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% comment %} linking the banner to the page {% endcomment %}
+{%load static%}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<h3>Do you want to delete the story below?</h3>
+
+    <form class="create-form-class" action="" method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h4>{{story.title}}</h4>
+    {% comment %} <input class="button1" type="submit" value="submit"> {% endcomment %}
+    <input class="button1" type="submit" value="submit">
+
+
+</form>
+
+{% endblock %}

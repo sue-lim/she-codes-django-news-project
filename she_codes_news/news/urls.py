@@ -10,8 +10,12 @@ app_name = 'news'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('', views.AllStories.as_view(), name='allStories'),
     path('post/<int:pk>/', views.StoryView.as_view(), name='story'),
     path('add-story/', views.AddStoryView.as_view(), name='newStory'),
-    path('post/edit/<int:pk>/', EditStoryView.as_view(), name='editStory'),
+    # no int pk for post a story as there is no story yet 
+    path('<int:pk>/editStory/', views.EditStoryView.as_view(), name='editStory'),
+    path('<int:pk>/deleteStory/', views.DeleteStoryView.as_view(), name='deleteStory'),
     path('<int:pk>/', views.AuthorStoriesView.as_view(), name='profileStory'),
+    path('<int:pk>/comment/', views.AddCommentView.as_view(), name='addComment'),
 ]

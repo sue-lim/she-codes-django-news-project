@@ -8,21 +8,24 @@
 
 {% block content %}
 
+<div class="form_row">
+    <div id="form_3_columns">
+    </div>
 
-<h2>Create an Account</h2>
-
-<br></br>
-<div class ='form_area'>
-    <table>
-        <form method="post">
+    <div id="form_3_columns_middle">
+        <h2>Create an account</h2>
+        <table>
+            <form method="post">
             {% csrf_token %}
             {{ form.as_table }}         
-    </table>
-    <br></br>
-<input class="button1" type="submit" value="submit">
+        </table>
+        <br></br>
+        <input class="button1" type="submit" value="submit">
+    </div>
 
+    <div id="form_3_columns">
+    </div>
 </div>
 
-
-
 {% endblock %}
+

@@ -7,13 +7,27 @@
 {% endblock %}
 {% block content %}
 
-<h2>Edit Account</h2> 
+{% comment %} <br></br> {% endcomment %}
+<div class="form_row">
+    <div id="form_3_columns">
+    </div>
 
+    <div id="form_3_columns_middle">
+        <h2>Edit your account</h2>
+        <table>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}         
+        </table>
+        <br></br>
+        <div id="form_3_columns_middle_button">
+        <input class="button1" type="submit" value="submit">
+        </div>
+    </div>
 
+    <div id="form_3_columns">
+    </div>
+</div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-</form> 
 {% endblock %}
+
