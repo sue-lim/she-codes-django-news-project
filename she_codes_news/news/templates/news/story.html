@@ -27,6 +27,8 @@ post author: {{ story.author }} {% endcomment %}
         {{ story.content|linebreaks }}
     </div>
 
+    <br></br>
+
 {% if user.is_authenticated %}
     <div id="comment-wrapper">
         <form method="POST" action="{% url 'news:addComment' story.id %}">
@@ -34,10 +36,10 @@ post author: {{ story.author }} {% endcomment %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
         </form> 
+        <br></br>
     </div> 
     
     {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
-    
     <ul>
         {% for comment in story.comments.all %}
         <li>{{comment.author.username}} ({{comment.created_at}}):   {{ comment.content }}</li>
@@ -46,7 +48,8 @@ post author: {{ story.author }} {% endcomment %}
 
 {% else %}
 <br></br>
-    <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment</p>
+    <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
+    <br></br>
     <ul>
     {% for comment in story.comments.all %}
         <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>

@@ -29,7 +29,9 @@
 
 <div class="story-card" id="story-card-{{ position }}">
     <a href="{% url 'news:story' story.id %}">
+
 {% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
+
         {% if position > 5 %}
             <img src="../static/news/images/placeholder-{{ position }}.jpg">
         {% else %}
