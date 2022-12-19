@@ -6,26 +6,56 @@
 
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
 {% endblock %}
 {% block content %}
-currentuser: {{ user.id }}
-post author: {{ story.author }}
+{% comment %} currentuser: {{ user.id }}
+post author: {{ story.author }} {% endcomment %}
 
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4><a href="{% url 'news:profileStory' story.author.id %}" > Written by {{ story.author }} </a></h4>
+    <h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
     {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
     <div id="story-content">
         {% if position < 5 %}
 {% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
             <img src="../static/news/images/placeholder-{{ position }}.jpg">
         {% else %}
-            <img src={{story.image_url}}">
+            <img src={{story.image_url}}>
         {% endif %}
         {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
         {{ story.content|linebreaks }}
     </div>
 
+    <br></br>
+
+{% if user.is_authenticated %}
+    <div id="comment-wrapper">
+        <form method="POST" action="{% url 'news:addComment' story.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+        </form> 
+        <br></br>
+    </div> 
+    
+    {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
+    <ul>
+        {% for comment in story.comments.all %}
+        <li>{{comment.author.username}} ({{comment.created_at}}):   {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+<br></br>
+    <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
+    <br></br>
+    <ul>
+    {% for comment in story.comments.all %}
+        <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>
+    {% endfor %}
+    </ul>
+
+{% endif %}
 
 {% endblock %}

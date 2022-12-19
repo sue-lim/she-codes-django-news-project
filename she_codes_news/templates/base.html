@@ -14,9 +14,10 @@
 
     <body>
         <header>
-            <div id="header-text">
+            {% comment %} <div id="header-text"> {% endcomment %}
+            <div id="header-text", class="nav-column-1">
                 <a id="header-link" href="{% url 'news:index' %}">
-                    <h1>She {Codes} News</h1>
+                    <h1 class="">She {Codes} Foods</h1>
                 </a>
             </div>
             {% include './nav.html' %}
@@ -25,7 +26,9 @@
         {% block content %}
         {% endblock %}
 
-        
+        <br></br>
+        <footer><h4>This is the footer</h4></footer>   
     </body>
+    
 </html>
 

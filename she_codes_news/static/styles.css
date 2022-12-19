@@ -3,6 +3,9 @@
 
 body {
     background-color: rgb(255, 255, 255);
+    height: 100%
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -14,21 +17,26 @@ header {
     
 }
 
+
 /* Header/Logo Title */
-/* .header {
+.header {
     padding: 60px;
     text-align: center;
-    background: #1abc9c;
+    
     color: white;
     font-size: 30px;
-} */
+}
 
 /* Page Content */
 /* .content {padding:20px;} */
 
-/* img {
-    filter: grayscale(100%);
-} */
+img {
+    border-radius: 5px;
+    /* float: left;
+    margin: 5px; */
+    /* filter: grayscale(100%); */
+    /* box-shadow: 5px 0px rgb(232, 230, 230); */
+}
 
 h1 {
     font-family: 'Montserrat Subrayada', sans-serif;
@@ -39,25 +47,45 @@ h1 {
 
 h2 {
     font-family: 'Montserrat Subrayada', sans-serif; 
+    margin-left: 5px;
 }
 
 h3 {
     font-size: 2rem;
-    margin: 0;
+    margin-left: 5px;
+}
+
+h4 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin-left: 5px;
 }
 
 #header-text {
     flex-basis: 80%;
     display: flex;
+    font-size: 40vw;
 }
 
 nav {
-    flex-basis: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    /* flex-basis: 20%;
+    /* display: flex; */
+    flex-direction: row;
+    display: inline-block;
+    padding-left: 0;
+    padding-top: 35px;
+    padding-bottom: 0px;
+    /* float: right; */
 }
-
+#nav-column-1 {
+    text-align: left;
+    padding-left: 20px;
+}
+#nav-column-2 {
+    text-align: right;
+    flex-direction: column;
+    padding-right: 0px;
+}
 a {
     margin: 2px;
     text-decoration: none;
@@ -66,23 +94,276 @@ a {
 
 a, p {
     font-family: monospace;
+    text-align: justify;
+    /* font-size: 25px; */
+
 }
 
 .button1:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .button1 {
+    background-color: rgb(255, 255, 255);
+    /* border-color: rgb(133, 130, 130); */
+    color: black;
+    /* padding: 10px 20px; */
     text-align: center;
-    width: 50%;}
-
-
-.create-form-class{
-    text-align: center;
-
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* border-radius: 16px; */
+    width: 100%;
 }
 
-.profile-card-image img{
+/* tables used to format forms as forms in DJANGO can't be formatted unless installing bootstrap */
+table{
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+}
+th, td {
+    padding: 5px;
+}
+tbody>tr>:nth-child(2){
+    width:200px;
+}
+tbody>tr>:nth-child(1){
+    width:150px;
+    vertical-align: top;
+}
+.form_area {
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border: 1px outset rgb();
+    background-color: rgb();
+    text-align: center;
+}
+.profile_html div{
+    width: 50%;
+}
+.profile-card img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+/* ################ */
+
+.story-card {
+    margin: 2px;
+    border: 1px solid rgb(168, 161, 161);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.story-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+#latest-stories {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
+    max-height: 500px;
+}
+
+#story-card-1 {
+    grid-area: left-1;
+}
+
+#story-card-2 {
+    grid-area: right-1;
+}
+
+#story-card-3 {
+    grid-area: right-2;
+}
+
+#story-card-4 {
+    grid-area: right-3;
+}
+
+#story-card-2 a,
+#story-card-3 a,
+#story-card-4 a {
+    display: flex;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+}
+
+#story-card-2 .story-card-text h3,
+#story-card-3 .story-card-text h3,
+#story-card-4 .story-card-text h3 {
+    font-size: 16px;
+}
+
+#story-card-2 .story-card-text h4,
+#story-card-3 .story-card-text h4,
+#story-card-4 .story-card-text h4 {
+    font-size: 12px;
+}
+
+#story-card-2 img,
+#story-card-3 img,
+#story-card-4 img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+#all-stories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#all-stories .story-card {
+    flex-basis: 32%;
+    flex-grow: 1;
+}
+
+#story-content {
+    text-align: justify;
+}
+
+#story-content img {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 50%;
+    
+}
+
+#profile-card-image img{
     width: 10%;
     height: 10%;
     margin-right: 5px;
+}
+/* <------------ DIV COLUMNS SETTING ------------> */
+.form_row {
+    text-align: justify;
+    padding-top: 10px;
+    background-color: ;
+    width: 100%;
+    margin-top: 20px;
+}
+/* <------------ DIV 3 COLUMNS SETTING ------------> */
+#form_2_columns{
+    width: 45%;
+	height: ;
+	padding: 2%;
+	display: inline-block;
+    vertical-align: text-top;
+}
+/* <------------ DIV 3 COLUMNS SETTING ------------> */
+#form_3_columns{
+    width: 33%;
+	height: ;
+	padding: ;
+	display: inline-block;
+    vertical-align: middle;
+}
+#form_3_columns_middle{
+    width: 29%;
+	padding: 2%;
+	display: inline-block;
+    vertical-align: middle;
+
+}
+#form_3_columns_middle_button{
+    align-content: center;
+}
+/* do not add settings to div */
+div {
+    align-items: stretch;
+}
+
+/* <------------ COMMENTS FORMS VIEW  ------------> */
+.commentformdiv {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: [col1-start] 100px  [col2-start] 100px  [col3-start] 100px [col3-end];
+    grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
+}
+/* .div1, .div2, .div3{
+    background-color: #444;
+    color: #fff;
+    padding: 20px;
+}   */
+.commentformdiv1 {
+    grid-column: col1-start;
+    grid-row: row1-start / row2-end ;
+}
+.commentformdiv2 {
+grid-column: col2-start ;
+grid-row: row1-start;
+}
+.commentformdiv3 {
+    grid-column: col2-start;
+    grid-row: row2-start ;
+}
+
+footer {
+    text-align: center;
+    padding-top: 30px;
+    height: 30px;
+    /* border-top: 1px solid #000; */
+    color: white;
+}
+  /*** Media Queries Below ***/
+  /*** Media Queries Below ***/
+@media (max-width: 900px) {
+    .section-b,
+    .section-d {
+    flex-direction: column;
+    }
+html {
+    font-size: 90%;
+    }
+}
+@media (max-width: 600px) {
+    .section-b,
+    .section-d {
+    flex-direction: column;
+    }
+html {
+    font-size: 80%;
+    }
+}
+@media (max-width: 500px) {
+    html {
+    font-size: 70%;
+    }
+}
+.typewriter {
+    /* font-family: monospace; */
+    /* letter-spacing: .17em; */
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .17em solid white);
+    animation: typing 3.5s steps(30, end), blinking-cursor .5s step-end;
+}
+
+@keyframes typing {
+    from {
+    width: 0
+    }
+    to {
+    width: 100%
+    }
+}
+@keyframes blinking-cursor {
+    from,
+    to {
+    border-color: transparent
+    }
+    50% {
+    border-color: white);
+    }
 }

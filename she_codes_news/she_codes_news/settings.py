@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    
 ]
+
+
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
@@ -146,4 +150,3 @@ COMMENTS_XTD_APP_MODEL_OPTIONS = {
         'who_can_post': 'users'
     }
 }
-

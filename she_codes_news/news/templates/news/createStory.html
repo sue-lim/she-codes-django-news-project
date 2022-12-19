@@ -1,27 +1,35 @@
 {% extends "base.html" %}
-{% comment %} ADD A NEW STORY TEMPLATE {% endcomment %}
-{% comment %} ADD A NEW STORY TEMPLATE {% endcomment %}
-
+{% comment %} CREATE A NEW STORY {% endcomment %}
+{% comment %} CREATE A NEW STORY {% endcomment %}
 {%load static%}
-
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h4>New Story</h4>
+<div class="form_row">
+    <div id="form_3_columns">
+    </div>
 
-    <form class="create-form-class" action="" method="post">
+    <div id="form_3_columns_middle">
+        <h2>Create an Story</h2>
+        <table>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}         
+        </table>
+        <br></br>
+        <input class="button1" type="submit" value="submit">
+    </div>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% comment %} <input class="button1" type="submit" value="submit"> {% endcomment %}
-    <input class="button1" type="submit" value="submit">
-
-
-</form>
+    <div id="form_3_columns">
+    </div>
+</div>
 
 {% endblock %}
+
+
+
+
 

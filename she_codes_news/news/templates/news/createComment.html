@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% comment %} CREATE A COMMENT {% endcomment %}
+{% comment %} CREATE A COMMENT {% endcomment %}
+{%load static%}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Create Comment</h2>
+<br></br>
+<div id="form_3_columns_middle">
+    <table>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}         
+    </table>
+    <br></br>
+    <input class="button1" type="submit" value="submit">
+</div>
+
+
+
+{% endblock %}
+
