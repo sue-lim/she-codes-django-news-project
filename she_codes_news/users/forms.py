@@ -13,7 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
             'username' : forms.TextInput({'size': '45','size': '45','placeholder' : 'Enter your username'}),
             'first_name' : forms.TextInput({'size': '45','size': '45','placeholder' : 'Enter your first name'}),
             'last_name' : forms.TextInput({'size': '45','size': '45','placeholder' : 'Enter your last name'}),
-            'bio' : forms.Textarea({'size': '45','placeholder' : 'Tell us more about yourself......'}),
+            'bio' : forms.Textarea({'placeholder' : 'Tell us more about yourself......'}),
             'profile_picture' : forms.URLInput({'size': '45','placeholder' : 'https://...'}),
             'email' : forms.TextInput({'size': '45','size': '45','placeholder' : 'Enter your email'}),
             'linkedin' : forms.TextInput({'size': '45','size': '45','placeholder' : 'https://www.linkedin.com/in/'}),
@@ -21,6 +21,8 @@ class CustomUserCreationForm(UserCreationForm):
             'password': forms.TextInput(attrs={'type':'password'})
             }
         
+        
+####################PROFILE CHANGE FORM 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser

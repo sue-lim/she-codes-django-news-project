@@ -3,19 +3,19 @@
 
 from django.contrib import admin
 from django.urls import path
-from . import views
-from .views import EditStoryView
+from . views import IndexView, AllStories, StoryView, AddStoryView, EditStoryView, DeleteStoryView, AuthorStoriesView, AddCommentView
+
 
 app_name = 'news'
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('', views.AllStories.as_view(), name='allStories'),
-    path('post/<int:pk>/', views.StoryView.as_view(), name='story'),
-    path('add-story/', views.AddStoryView.as_view(), name='newStory'),
+    path('', IndexView.as_view(), name='index'),
+    path('', AllStories.as_view(), name='allStories'),
+    path('<int:pk>/post/', StoryView.as_view(), name='story'),
+    path('add-story/', AddStoryView.as_view(), name='newStory'),
     # no int pk for post a story as there is no story yet 
-    path('<int:pk>/editStory/', views.EditStoryView.as_view(), name='editStory'),
-    path('<int:pk>/deleteStory/', views.DeleteStoryView.as_view(), name='deleteStory'),
-    path('<int:pk>/', views.AuthorStoriesView.as_view(), name='profileStory'),
-    path('<int:pk>/comment/', views.AddCommentView.as_view(), name='addComment'),
+    path('editStory/<int:pk>/', EditStoryView.as_view(), name='editStory'),
+    path('<int:pk>/deleteStory/', DeleteStoryView.as_view(), name='deleteStory'),
+    path('<int:pk>/', AuthorStoriesView.as_view(), name='profileStory'),
+    path('<int:pk>/comment/', AddCommentView.as_view(), name='addComment'),
 ]

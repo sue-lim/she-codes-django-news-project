@@ -12,50 +12,86 @@
 {% comment %} currentuser: {{ user.id }}
 post author: {{ story.author }} {% endcomment %}
 
-<div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
-    {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
-    <div id="story-content">
-        {% if position < 5 %}
-{% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
-            <img src="../static/news/images/placeholder-{{ position }}.jpg">
-        {% else %}
-            <img src={{story.image_url}}>
-        {% endif %}
-        {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
+<h2>{{ story.title }}</h2>
+<div class = "comment-wrapper">
+    <div class="form_2_columns1">
+        <h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
+        <p><a href="{% url 'news:editStory' story.id %}">Edit Post | </a>
+        <a href="{% url 'news:deleteStory' story.id %}">Delete Post</a></p>
         {{ story.content|linebreaks }}
     </div>
+    {% comment %} <div id="form_gap_columns"> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
 
-    <br></br>
+    <div class="form_2_columns2">
+        {% if position < 5 %}
+                {% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
+        <img class="story-page-image" src="../static/news/images/placeholder-{{ position }}.jpg">
+        {% else %}
+        <img src={{story.image_url}}>
+        {% endif %}
+        
+    </div>
 
-{% if user.is_authenticated %}
-    <div id="comment-wrapper">
-        <form method="POST" action="{% url 'news:addComment' story.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-        </form> 
-        <br></br>
-    </div> 
-    
+    <div class="form_2_columns3">
+        {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'news:addComment' story.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+            </form> 
+            <br></br>
+        
     {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
-    <ul>
+        <ul>
+            {% for comment in story.comments.all %}
+            <li>{{comment.author.username}} ({{comment.created_at}}):   {{ comment.content }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <br></br>
+            <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
+            <br></br>
+            <ul>
         {% for comment in story.comments.all %}
-        <li>{{comment.author.username}} ({{comment.created_at}}):   {{ comment.content }}</li>
+            <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>
         {% endfor %}
-    </ul>
+        </ul>
+        {% endif %}
+    </div>
 
-{% else %}
-<br></br>
-    <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
-    <br></br>
-    <ul>
-    {% for comment in story.comments.all %}
-        <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>
-    {% endfor %}
-    </ul>
+</div> 
 
-{% endif %}
+        
+                {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add a comment | </a> {% endcomment %}
+                {% comment %} <h4>Posted... {{ story.pub_date }}</h4> - <a href="{% url 'editStory' %}">(edit)</a> {% endcomment %}
+        
+        
+                {% comment %} <img src="{% static '/news/images/placeholder-5.jpg' %}"> {% endcomment %}
+                
+            
+        {% comment %} {% if user.is_authenticated %} {% endcomment %}
 
-{% endblock %}
+
+        
+
+        {% endblock %}   
+
+
+
+
+
+
+{% comment %} <div id="comment-wrapper"> {% endcomment %}
+    {% comment %} <form method="POST" action="{% url 'news:deleteStory' story.id %}"> {% endcomment %}
+    {% comment %} {% csrf_token %} {% endcomment %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {% comment %} <button type="submit">Submit</button> {% endcomment %}
+    {% comment %} </form>  {% endcomment %}
+    {% comment %} <br></br> {% endcomment %}
+{% comment %} </div>  {% endcomment %}
+
+
+
+
+

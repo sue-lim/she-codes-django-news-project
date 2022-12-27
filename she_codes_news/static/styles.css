@@ -32,10 +32,11 @@ header {
 
 img {
     border-radius: 5px;
-    /* float: left;
-    margin: 5px; */
-    /* filter: grayscale(100%); */
-    /* box-shadow: 5px 0px rgb(232, 230, 230); */
+    display: flexbox;
+}
+story-page-image {
+    width:10%;
+    max-width:400px
 }
 
 h1 {
@@ -103,17 +104,18 @@ a, p {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .button1 {
-    background-color: rgb(255, 255, 255);
+    background-color: #e7e7e7;
     /* border-color: rgb(133, 130, 130); */
-    color: black;
+    /* color: black; */
     /* padding: 10px 20px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
-    /* border-radius: 16px; */
+    border-radius: 5px;
     width: 100%;
+    height: 35px;
 }
 
 /* tables used to format forms as forms in DJANGO can't be formatted unless installing bootstrap */
@@ -122,128 +124,21 @@ table{
     font-family: 'Courier New', Courier, monospace;
 }
 th, td {
-    padding: 5px;
-}
-tbody>tr>:nth-child(2){
-    width:200px;
+    padding: 6px
+    size: 100%;
 }
 tbody>tr>:nth-child(1){
-    width:150px;
+    width:100%;
     vertical-align: top;
 }
-.form_area {
-    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-    padding-top: 10px;
-    padding-bottom: 20px;
-    border: 1px outset rgb();
-    background-color: rgb();
-    text-align: center;
+tbody>tr>:nth-child(2){
+    width:100%;
 }
-.profile_html div{
-    width: 50%;
-}
-.profile-card img {
-    width: 33%;
-    height: 100%;
-    margin-right: 5px;
+/* .form_area_test {
+    background-color: blue;
+    size: 100%; */
 }
 
-/* ################ */
-
-.story-card {
-    margin: 2px;
-    border: 1px solid rgb(168, 161, 161);
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.story-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-#latest-stories {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 1px 1px;
-    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
-    max-height: 500px;
-}
-
-#story-card-1 {
-    grid-area: left-1;
-}
-
-#story-card-2 {
-    grid-area: right-1;
-}
-
-#story-card-3 {
-    grid-area: right-2;
-}
-
-#story-card-4 {
-    grid-area: right-3;
-}
-
-#story-card-2 a,
-#story-card-3 a,
-#story-card-4 a {
-    display: flex;
-    max-height: 120px;
-    width: 100%;
-    height: 100%;
-}
-
-#story-card-2 .story-card-text h3,
-#story-card-3 .story-card-text h3,
-#story-card-4 .story-card-text h3 {
-    font-size: 16px;
-}
-
-#story-card-2 .story-card-text h4,
-#story-card-3 .story-card-text h4,
-#story-card-4 .story-card-text h4 {
-    font-size: 12px;
-}
-
-#story-card-2 img,
-#story-card-3 img,
-#story-card-4 img {
-    width: 33%;
-    height: 100%;
-    margin-right: 5px;
-}
-
-#all-stories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#all-stories .story-card {
-    flex-basis: 32%;
-    flex-grow: 1;
-}
-
-#story-content {
-    text-align: justify;
-}
-
-#story-content img {
-    float: right;
-    margin: 0 0 10px 10px;
-    width: 50%;
-    
-}
-
-#profile-card-image img{
-    width: 10%;
-    height: 10%;
-    margin-right: 5px;
-}
 /* <------------ DIV COLUMNS SETTING ------------> */
 .form_row {
     text-align: justify;
@@ -252,19 +147,56 @@ tbody>tr>:nth-child(1){
     width: 100%;
     margin-top: 20px;
 }
-/* <------------ DIV 3 COLUMNS SETTING ------------> */
-#form_2_columns{
-    width: 45%;
-	height: ;
+#form_gap_columns{
+    size: 5%;
 	padding: 2%;
 	display: inline-block;
     vertical-align: text-top;
 }
 /* <------------ DIV 3 COLUMNS SETTING ------------> */
-#form_3_columns{
-    width: 33%;
+#form_2_columns{
+    width: 40%;
 	height: ;
-	padding: ;
+	padding: 2%;
+	display: inline-block;
+    vertical-align: text-top;
+}
+#form_2_columns_img{
+    width: 40%;
+	height: auto;
+	padding: 2%;
+	display: inline-block;
+    vertical-align: text-top;
+    width: 100%;
+}
+.comment-wrapper{
+    /* width: 40%;
+	height: ;
+	padding: 2%;
+	display: flexbox;
+    vertical-align: text-top; */
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    /* height: 200px; */
+
+}
+.form_2_columns1, .form_2_columns3{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 45%;
+    height: 50%;
+}
+.form_2_columns2{
+    margin-right: 5px;
+    width: 40%;
+    height: 110px;
+}
+
+/* <------------ DIV 3 COLUMNS SETTING ------------> */
+#form_3_columns{
+    width: 29%;
+	padding: 2%;
 	display: inline-block;
     vertical-align: middle;
 }
@@ -273,41 +205,18 @@ tbody>tr>:nth-child(1){
 	padding: 2%;
 	display: inline-block;
     vertical-align: middle;
-
-}
-#form_3_columns_middle_button{
-    align-content: center;
 }
 /* do not add settings to div */
 div {
     align-items: stretch;
 }
-
-/* <------------ COMMENTS FORMS VIEW  ------------> */
-.commentformdiv {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: [col1-start] 100px  [col2-start] 100px  [col3-start] 100px [col3-end];
-    grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
-}
-/* .div1, .div2, .div3{
-    background-color: #444;
-    color: #fff;
-    padding: 20px;
-}   */
-.commentformdiv1 {
-    grid-column: col1-start;
-    grid-row: row1-start / row2-end ;
-}
-.commentformdiv2 {
-grid-column: col2-start ;
-grid-row: row1-start;
-}
-.commentformdiv3 {
-    grid-column: col2-start;
-    grid-row: row2-start ;
+textarea {
+    width: 100%;
+    /* this is 100% of the div */
+    height: 200px;
 }
 
+  /* #################### Media Queries Below #################### */
 footer {
     text-align: center;
     padding-top: 30px;
@@ -315,8 +224,7 @@ footer {
     /* border-top: 1px solid #000; */
     color: white;
 }
-  /*** Media Queries Below ***/
-  /*** Media Queries Below ***/
+  /* #################### Media Queries Below #################### */
 @media (max-width: 900px) {
     .section-b,
     .section-d {
@@ -340,6 +248,8 @@ html {
     font-size: 70%;
     }
 }
+
+/* #################### INDEX PAGE BLINKING TYPEWRITER SETTING  ####################*/
 .typewriter {
     /* font-family: monospace; */
     /* letter-spacing: .17em; */
@@ -349,7 +259,6 @@ html {
     border-right: .17em solid white);
     animation: typing 3.5s steps(30, end), blinking-cursor .5s step-end;
 }
-
 @keyframes typing {
     from {
     width: 0
@@ -366,4 +275,94 @@ html {
     50% {
     border-color: white);
     }
+}
+
+/* #################### IMAGE CSS ####################*/
+.profile-card img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+}
+.story-card {
+    margin: 2px;
+    border: 1px solid rgb(168, 161, 161);
+    padding: 5px;
+    border-radius: 5px;
+}
+.story-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+#story-card-page img {
+    width: 100%;
+    height: auto;
+    ;
+}
+#latest-stories {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
+    max-height: 500px;
+}
+#story-card-1 {
+    grid-area: left-1;
+}
+#story-card-2 {
+    grid-area: right-1;
+}
+#story-card-3 {
+    grid-area: right-2;
+}
+#story-card-4 {
+    grid-area: right-3;
+}
+#story-card-2 a,
+#story-card-3 a,
+#story-card-4 a {
+    display: flex;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+}
+#story-card-2 .story-card-text h3,
+#story-card-3 .story-card-text h3,
+#story-card-4 .story-card-text h3 {
+    font-size: 16px;
+}
+#story-card-2 .story-card-text h4,
+#story-card-3 .story-card-text h4,
+#story-card-4 .story-card-text h4 {
+    font-size: 12px;
+}
+#story-card-2 img,
+#story-card-3 img,
+#story-card-4 img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+}
+#all-stories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#all-stories .story-card {
+    flex-basis: 32%;
+    flex-grow: 1;
+}
+#story-content {
+    text-align: justify;
+}
+#story-content img {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 50%;
+}
+#profile-card-image img{
+    width: 10%;
+    height: 10%;
+    margin-right: 5px;
 }
