@@ -3,7 +3,7 @@
 
 body {
     background-color: rgb(255, 255, 255);
-    height: 100%
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -123,7 +123,7 @@ table{
 }
 th, td {
     padding: 6px
-    size: 100%;
+    /* size: 100%; */
 }
 tbody>tr>:nth-child(1){
     width:100%;
@@ -132,16 +132,14 @@ tbody>tr>:nth-child(1){
 tbody>tr>:nth-child(2){
     width:100%;
 }
-/* .form_area_test {
-    background-color: blue;
-    size: 100%; */
-}
+
+
 
 /* <------------ DIV COLUMNS SETTING ------------> */
 .form_row {
     text-align: justify;
     padding-top: 10px;
-    background-color: ;
+    
     width: 100%;
     margin-top: 20px;
 }
@@ -154,7 +152,7 @@ tbody>tr>:nth-child(2){
 /* <------------ DIV 3 COLUMNS SETTING ------------> */
 #form_2_columns{
     width: 40%;
-	height: ;
+	
 	padding: 2%;
 	display: inline-block;
     vertical-align: text-top;
@@ -254,7 +252,7 @@ html {
     margin: 0 auto;
     overflow: hidden;
     white-space: nowrap;
-    border-right: .17em solid white);
+    border-right: .17em solid white;
     animation: typing 3.5s steps(30, end), blinking-cursor .5s step-end;
 }
 @keyframes typing {
@@ -271,7 +269,7 @@ html {
     border-color: transparent
     }
     50% {
-    border-color: white);
+    border-color: white;
     }
 }
 
