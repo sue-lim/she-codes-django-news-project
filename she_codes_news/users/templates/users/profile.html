@@ -5,7 +5,7 @@
 {% load static %}
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -33,7 +33,7 @@
     </div>
     <div id="form_2_columns">
         {% comment %} <div = class="profile_html"> {% endcomment %}
-        <img class="profile-card" src="https://picsum.photo/600">
+        {% comment %} <img class="profile-card" src="https://picsum.photo/600"> {% endcomment %}
         {% else %}
         <img src="{{ customuser.profile_picture }}"/>
         {% endif %}

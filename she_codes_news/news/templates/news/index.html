@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'she_codes_news\news\static\news\news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,10 +13,11 @@
 
 {% if user.is_authenticated %}
 <p> Welcome back...{{user.username}}<a class='' href="{% url 'news:newStory' %}"> | (+) New Story</a></p>
-    
+    <div class ="div_p_login_banner">
     {% else %}
         <p class="typewriter">To (+) New Story ... please  | <a href="{% url 'login' %}">Login</a> | <a href="{% url 'users:createAccount' %}">Create Account</a></p>
         {% endif %}
+    </div>
 </div>
 
 <p></p>

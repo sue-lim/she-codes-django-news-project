@@ -12,23 +12,47 @@
 {% comment %} currentuser: {{ user.id }}
 post author: {{ story.author }} {% endcomment %}
 
-<h2>{{ story.title }}</h2>
+<h5>{{ story.title }}</h5>
 <div class = "comment-wrapper">
     <div class="form_2_columns1">
-        <h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
-        <p><a href="{% url 'news:editStory' story.id %}">Edit Post | </a>
-        <a href="{% url 'news:deleteStory' story.id %}">Delete Post</a></p>
+
+    <div class ='speech-bubble'><span style='font-size:20px;'><a href="{% url 'news:like' story.id %}"> 👍🏼 {{story.liked_by.count}} </a></span></div>
+                {% comment %} <p>Liked by: </p>
+                <ul> {% for liked_by_user in story.liked_by.all %}
+                {% comment %} <li>{{ liked_by_user.username }}</li> {% endcomment %}
+                {% comment %} {{story.liked_by.count}} {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+                {% comment %} </ul> {% endcomment %}
+    <div class ='speech-bubble'><span style='font-size:20px;'><a href="{% url 'news:love' story.id %}"> ❤️ {{story.loved_by.count}} </a></span></div>
+                {% comment %} Loved by  {% endcomment %}
+                {% comment %} <ul> {% for loved_by_user in story.loved_by.all %} {% endcomment %}
+                {% comment %} <li>{{ loved_by_user.username }}</li> {% endcomment %}
+                {% comment %} {{story.loved_by.count}} {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+                {% comment %} </ul> {% endcomment %}
+    <div class ='speech-bubble'><span style='font-size:20px;'><a href="{% url 'news:dislike' story.id %}"> 👎🏼 {{story.disliked_by.count}}</a></span></div>
+                {% comment %} isliked by  {% endcomment %}
+                {% comment %} <ul> {% for disliked_by_user in story.disliked_by.all %} {% endcomment %}
+                {% comment %} <li>{{ disliked_by_user.username }}</li> {% endcomment %}
+                {% comment %} {{story.disliked_by.count}} {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+                {% comment %} </ul> {% endcomment %}
+
+
+<h4><a href="{% url 'users:profile' story.author.id %}" > Written by {{ story.author }} </a></h4>
+        {% comment %} <p><a href="{% url 'news:editStory' story.id %}">Edit Post | </a> {% endcomment %}
+        {% comment %} <a href="{% url 'news:deleteStory' story.id %}">Delete Post</a></p> {% endcomment %}
         {{ story.content|linebreaks }}
     </div>
-    {% comment %} <div id="form_gap_columns"> {% endcomment %}
-    {% comment %} </div> {% endcomment %}
+    <div id="form_gap_columns">
+    </div>
 
     <div class="form_2_columns2">
         {% if position < 5 %}
                 {% comment %} this adds the picture from the URL, if the url is broken, it will grab a picture from the repository randomly {% endcomment %}
-        <img class="story-page-image" src="../static/news/images/placeholder-{{ position }}.jpg">
+        <img src="../static/news/images/placeholder-{{ position }}.jpg">
         {% else %}
-        <img src={{story.image_url}}>
+        <img class="story-page-image" src={{story.image_url}}>
         {% endif %}
         
     </div>
@@ -41,7 +65,13 @@ post author: {{ story.author }} {% endcomment %}
             <button type="submit">Submit</button>
             </form> 
             <br></br>
-        
+            
+            <br></br>
+            <br></br>
+            <br></br>
+
+            
+            {% comment %} <button type="submit", name="'story_id", value='{{story.id}}'>Like</button> {% endcomment %}
     {% comment %} <p><a href="{% url 'news:addComment' story.id %}">Add comment</a></p> {% endcomment %}
         <ul>
             {% for comment in story.comments.all %}
@@ -49,12 +79,18 @@ post author: {{ story.author }} {% endcomment %}
             {% endfor %}
         </ul>
         {% else %}
-            <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+            <div id="form_gap_columns">
+                <br></br>
             <p>Please <a href="{% url 'login' %}">Login |</a> <a href="{% url 'users:createAccount' %}">Create Account</a> to comment...</p>
+
             <br></br>
             <ul>
+            </div>
         {% for comment in story.comments.all %}
-            <li>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</li>
+            <li><p>{{comment.author.username}} ({{comment.created_at}}):{{ comment.content }}</p></li>
         {% endfor %}
         </ul>
         {% endif %}

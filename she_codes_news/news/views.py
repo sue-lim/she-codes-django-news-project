@@ -2,13 +2,11 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm, CommentForm
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 # from django.core.exceptions import PermissionDenied
-
-
-
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -110,6 +108,37 @@ class AuthorStoriesView(ListView):
         qs = qs.filter(author_id=self.kwargs['pk'])  # add filter for only the user you / authors id care about
         return qs
     
-
+@login_required
+def like_post(request, pk):
+    story = get_object_or_404(NewsStory, pk=pk)
+    user = request.user
+    if story.liked_by.filter(id=user.id).exists():
+        story.liked_by.remove(user)
+    else:
+        story.liked_by.add(request.user)
     
+    return redirect('news:story', pk=story.id)
+
+@login_required
+def dislike_post(request, pk):
+    story = get_object_or_404(NewsStory, pk=pk)
+    user = request.user
+    if story.disliked_by.filter(id=user.id).exists():
+        story.disliked_by.remove(user)
+    else:
+        story.disliked_by.add(request.user)
+    
+    return redirect('news:story', pk=story.id)
+
+@login_required
+def love_post(request, pk):
+    story = get_object_or_404(NewsStory, pk=pk)
+    user = request.user
+    if story.loved_by.filter(id=user.id).exists():
+        story.loved_by.remove(user)
+    else:
+        story.loved_by.add(request.user)
+    
+    return redirect('news:story', pk=story.id)
+
 
