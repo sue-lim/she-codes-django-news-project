@@ -1,24 +1,34 @@
 {% extends "base.html" %}
 {% comment %} linking the banner to the page {% endcomment %}
+{% block title%}Edit Stories{% endblock%}
 {%load static%}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 
 {% endblock %}
 
 {% block content %}
+<div class="form_3_columns">
+    <div id="form_3_columns_middle">
+    
+    </div>
+    <div id="form_3_columns_middle">
+        <h2>Edit your Story!</h2>
 
-<h4>Edit your Story!</h4>
+    {% comment %} <div id="grid-item-forms"> {% endcomment %}
+        <table>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_table }}         
+        </table>
+        <br></br>
+        <input class="button1" type="submit" value="submit">
+    {% comment %} </div> {% endcomment %}
 
-    <form class="create-form-class" action="" method="post">
+</div>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% comment %} <input class="button1" type="submit" value="submit"> {% endcomment %}
-    <input class="fill-form-button" type="submit" value="Update">
-
-
-</form>
-
+<div id="form_3_columns_middle">
+    
+</div>
 {% endblock %}

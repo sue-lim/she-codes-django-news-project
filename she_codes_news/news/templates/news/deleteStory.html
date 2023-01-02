@@ -3,7 +3,7 @@
 {%load static%}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 
 {% endblock %}
 
@@ -14,7 +14,7 @@
     <form class="create-form-class" action="" method="post">
 
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_table }}
     <h4>{{story.title}}</h4>
     {% comment %} <input class="button1" type="submit" value="submit"> {% endcomment %}
     <input class="button1" type="submit" value="submit">

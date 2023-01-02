@@ -5,7 +5,7 @@
 {% load static %}
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -15,32 +15,33 @@
 {% if request.user == customuser %}
 {% if not customuser.profile_picture %}
 
-<h2>Welcome back ...</h2>
-</div>
-
-    <div = class="profile_html">
-    {% comment %} <div = class="profile_html"> {% endcomment %}
-    <img class="profile-card" src="https://picsum.photo/600">
-    {% else %}
-    <img src="{{ customuser.profile_picture }}"/>
-    {% endif %}
+<h2>Welcome back ... {{ customuser.first_name }}</h2>
+<div = class"form_row">
+    <div id="form_2_columns">
+        <ul>
+        <p> Username: {{ customuser.username }}</a></p> 
+        <p> First name: {{ customuser.first_name }}</p>            <p> Last name: {{ customuser.last_name }}</p>
+        <p> Email: {{ customuser.email }}</p>
+        <p> Bio: {{ customuser.bio }}</p>
+        {% comment %} <p> Profile Picture: {{ customuser.profilepicture }}</p>  {% endcomment %}
+        <p> Date joined: {{ customuser.date_joined }}</p>
+        <p> Stories published: {{customuser.newsstory_set.count}}</p>
+        <br></br>            
+        <button class ='button1'> <a href="{% url 'users:editAccount' customuser.id %}">Edit Account</a></button></ul>
+    </div>
+    <div id="form_gap_columns">
+    </div>
+    <div id="form_2_columns">
+        {% comment %} <div = class="profile_html"> {% endcomment %}
+        {% comment %} <img class="profile-card" src="https://picsum.photo/600"> {% endcomment %}
+        {% else %}
+        <img src="{{ customuser.profile_picture }}"/>
+        {% endif %}
     </div>
 </div>
-<div = class="profile_html">
-    <ul>
-    <p> Username: {{ customuser.username }}</a></p> 
-    <p> First name: {{ customuser.first_name }}</p>
-    <p> Last name: {{ customuser.last_name }}</p>
-    <p> Email: {{ customuser.email }}</p>
-    <p> Bio: {{ customuser.bio }}</p>
-    {% comment %} <p> Profile Picture: {{ customuser.profilepicture }}</p>  {% endcomment %}
-    <p> Date joined: {{ customuser.date_joined }}</p>
-    <p> Stories published: {{customuser.newsstory_set.count}}</p>
-    <br></br>
-    <button class =''> <a href="{% url 'users:editAccount' customuser.id %}">Edit Account</a></button></ul>
 
         {% endif %}
-</div>
+
 {% comment %} a. used for any user otherwise b. {% endcomment %}
 {% comment %} b. for logged in users only {% endcomment %}
 <br></br>

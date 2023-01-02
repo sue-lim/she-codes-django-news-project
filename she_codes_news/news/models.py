@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 # basic admin panel with Groups and Users models which come from Django authentication framework located in django.contrib.auth.
+User = get_user_model()
 
 # this is the model
 class NewsStory(models.Model):
@@ -11,6 +12,9 @@ class NewsStory(models.Model):
     pub_date = models.DateTimeField('Date of Story')
     content = models.TextField('Story')
     image_url = models.URLField(blank=True)
+    loved_by = models.ManyToManyField(User, related_name='loved_stories', blank=True, null=True ) 
+    liked_by = models.ManyToManyField(User, related_name='liked_stories', blank=True, null=True ) 
+    disliked_by = models.ManyToManyField(User, related_name='disliked_stories', blank=True, null=True ) 
 #text field for longer text vs such as blogs
 
 def get_absolute_url(self):
@@ -27,3 +31,4 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+    

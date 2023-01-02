@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'news/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -20,7 +20,6 @@
             {{ form.as_table }}         
         </table>
         <br></br>
-        <div id="form_3_columns_middle_button">
         <input class="button1" type="submit" value="submit">
         </div>
     </div>

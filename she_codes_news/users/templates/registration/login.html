@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% comment %} CREATE A NEW STORY {% endcomment %}
-{% comment %} CREATE A NEW STORY {% endcomment %}
+{% comment %} LOGIN PAGE {% endcomment %}
+{% comment %} LOGIN PAGE {% endcomment %}
 {%load static%}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static '.\static\news\news.css' %}">
@@ -14,12 +14,10 @@
 
     <div id="form_3_columns_middle">
         <h2>Login</h2>
-
-    <div id="form_3_columns_middle">
         <table>
-        <form method="post">
-        {% csrf_token %}
-        {{ form.as_table }}         
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}         
         </table>
         <br></br>
         <input class="button1" type="submit" value="submit">
