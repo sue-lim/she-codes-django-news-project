@@ -1,3 +1,9 @@
-# Plus Resources: Django Project Starter
+# Project - Django News Project 
+To run via local server / python manage.py runserver 
 
-Starter code for the Plus Django project.
+# Project Description 
+Created a food blog with this template.
+Users can create profile, add news articles, like, love, dislike posts. 
+
+# Tech Utilized 
+Django 
