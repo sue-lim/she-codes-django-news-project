@@ -1,5 +1,5 @@
 # Project - Django News Project 
-> *To run via local server / python manage.py runserver 
+>*To run via local server / python manage.py runserver 
 
 > *Project Description 
 Created a food blog with this template.
