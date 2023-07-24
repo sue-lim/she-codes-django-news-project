@@ -10,21 +10,28 @@ from . import views
 app_name = 'news'
 
 urlpatterns = [
+    # homepage with sliced views 
     path('', IndexView.as_view(), name='index'),
-    path('', AllStories.as_view(), name='allStories'),
-    path('<int:pk>/post/', StoryView.as_view(), name='story'),
-    path('add-story/', AddStoryView.as_view(), name='newStory'),
-    # no int pk for post a story as there is no story yet 
-    path('editStory/<int:pk>/', EditStoryView.as_view(), name='editStory'),
+    #page with all stories 
+    path('allStories/', AllStories.as_view(), name='allStories'),
+    #view seperate stories 
+    path('<int:pk>/', StoryView.as_view(), name='story'),
+    #view add story page, no int pk for post a story as there is no story yet
+    path('addStory/', AddStoryView.as_view(), name='newStory'),
+    #  edit story 
+    path('<int:pk>/editStory/', EditStoryView.as_view(), name='editStory'),
+    # delete story 
     path('<int:pk>/deleteStory/', DeleteStoryView.as_view(), name='deleteStory'),
-    path('<int:pk>/', AuthorStoriesView.as_view(), name='profileStory'),
+    # view stories under the user 
+    path('<int:pk>/authorStories/', AuthorStoriesView.as_view(), name='profileStory'),
+    # add comment to a story 
     path('<int:pk>/comment/', AddCommentView.as_view(), name='addComment'),
+    # update like to a story 
     path('<int:pk>/like', views.like_post, name="like"),
+    # update dislike to a story 
     path('<int:pk>/dislike', views.dislike_post, name="dislike"),
+    # update love to a story 
     path('<int:pk>/love', views.love_post, name="love"),
 
-
-    # path('<int:pk>/post/like', LikeStory.as_view(), name='likeStory'),
-    # path('<int:pk>/post/dislike', DisLikeStory.as_view(), name='dislikeStory'),
 
 ]

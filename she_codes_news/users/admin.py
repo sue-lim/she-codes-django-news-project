@@ -12,15 +12,6 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ['username','first_name', 'last_name', 'email', 'date_joined' ,'last_login', 'profile_picture']
     action = ['edit']
-    fieldsets = UserAdmin.fieldsets + (
-        (
-            "Extra Fields",
-            {
-                "fields": (
-                    "twitter_handle",
-                )
-            },
-        ),
-    )
+    fieldsets = UserAdmin.fieldsets 
 
 admin.site.register(CustomUser, CustomUserAdmin)

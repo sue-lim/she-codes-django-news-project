@@ -16,8 +16,11 @@
     {% csrf_token %}
     {{ form.as_table }}
     <h4>{{story.title}}</h4>
+    <p>{{story.pub_date}}</p>
+    <p>{{story.content}}</p>
+
     {% comment %} <input class="button1" type="submit" value="submit"> {% endcomment %}
-    <input class="button1" type="submit" value="submit">
+    <input class="button1" type="submit" value="Delete">
 
 
 </form>

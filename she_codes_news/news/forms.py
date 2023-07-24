@@ -1,13 +1,13 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, EmailInput, Textarea
 from .models import NewsStory, Comment
-from django.forms import TextInput, EmailInput, Textarea
+# calling the objects from the model and reusing them below 
+
 
 
 class StoryForm(forms.ModelForm):
     class Meta:
         model = NewsStory
-        # you can re-order the below
         fields = ['title', 'pub_date', 'content', 'image_url']
         widgets = {
             'title' : forms.TextInput({'size': '45','placeholder' : 'Enter the title of your story here...'}),
@@ -16,10 +16,7 @@ class StoryForm(forms.ModelForm):
             'image_url' : forms.URLInput({'size': '45','placeholder' : 'https://...'}),
             }
         
-        
-#         {
-#             'pub_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date','type':'date'}),
-# }
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -35,7 +32,6 @@ class CommentForm(forms.ModelForm):
 class EditStory(forms.ModelForm):
     class Meta:
         model = NewsStory
-        # you can re-order the below
         fields = ['title', 'pub_date', 'content', 'image_url']
         widgets = {
             'title' : forms.TextInput(attrs={

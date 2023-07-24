@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # registering the name of the app 'news' / project. This has been defined in news.apps.py
     'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import NewsStory
-from .models import Comment
+from .models import NewsStory, Comment
+
 
 class NewsStoryAdmin(admin.ModelAdmin):
     list_display = ('author', 'title', 'pub_date', 'content',)

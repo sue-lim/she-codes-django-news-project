@@ -33,7 +33,7 @@
         {% endif %}
     </div>
 
-<h2>All Stories...</h2>
+<h2><a href="{% url 'news:allStories' %}">All Stories...</a></h2>
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
